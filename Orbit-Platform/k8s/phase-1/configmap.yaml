@@ -1,0 +1,8 @@
+apiVersion: v1
+data:
+  APP_NAME: orbit-api
+  MESSAGE: Hello from ConfigMap
+kind: ConfigMap
+metadata:
+  name: orbit-api-config
+  namespace: platform-dev

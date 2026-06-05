@@ -1,0 +1,49 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: orbit-api
+    app.kubernetes.io/name: orbit-api
+    app.kubernetes.io/instance: dev
+  name: orbit-api
+  namespace: platform-dev
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: orbit-api
+      app.kubernetes.io/instance: dev
+      app: orbit-api
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        app: orbit-api
+        app.kubernetes.io/name: orbit-api
+        app.kubernetes.io/instance: dev
+    spec:
+      containers:
+      - image: orbit-api:0.1.0
+        name: orbit-api
+        imagePullPolicy: Never
+        ports:
+        - name: http
+          containerPort: 8080
+        envFrom:
+        - configMapRef:
+            name: orbit-api-config
+        - secretRef:
+            name: orbit-api-secret
+        readinessProbe:
+          httpGet:
+            path: /readyz
+            port: http
+          initialDelaySeconds: 3
+          periodSeconds: 5
+        livenessProbe:
+          httpGet:
+            path: /healthz
+            port: http
+          initialDelaySeconds: 3
+          periodSeconds: 10
+

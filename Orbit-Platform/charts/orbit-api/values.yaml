@@ -1,0 +1,31 @@
+namespace: platform-dev
+
+replicacCount: 2
+
+image:
+  repository: orbit-api
+  tag: "0.1.0"
+  pullPolicy: Never
+
+service:
+  type: ClusterIP
+  port: 80
+  targetPort: 8080
+
+config:
+  appName: orbit-api
+  message: "Hello from HELM - Upgraded"
+
+secret:
+  orbitSecret: "not-for-production"
+
+probes:
+  readiness:
+    path: /readyz
+    initialDelaySeconds: 3
+    periodSeconds: 5
+  
+  liveness:
+    path: /healthz
+    initialDelaySeconds: 3
+    periodSeconds: 10
