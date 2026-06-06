@@ -14,7 +14,7 @@ service:
 
 config:
   appName: orbit-api
-  message: "Hello from HELM - Upgraded"
+  message: "Gitops with Argo"
 
 secret:
   orbitSecret: "not-for-production"

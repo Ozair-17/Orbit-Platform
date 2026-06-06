@@ -1,0 +1,22 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: orbit-api
+  namespace: argocd
+
+spec:
+  project: default
+
+  source:
+    repoURL: https://github.com/Ozair-17/Orbit-Platform
+    targetRevision: main
+    path: Orbit-Platform/charts/orbit-api
+
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: platform-dev
+
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
