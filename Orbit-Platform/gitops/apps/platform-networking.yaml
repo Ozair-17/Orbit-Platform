@@ -1,0 +1,18 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: platform-networking
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/YOUR_USERNAME/YOUR_REPO.git
+    targetRevision: main
+    path: Orbit-Platform/platform/networking
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: platform-dev
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: false

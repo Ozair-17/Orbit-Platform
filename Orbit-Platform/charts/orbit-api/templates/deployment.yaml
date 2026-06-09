@@ -29,6 +29,7 @@ spec:
         app.kubernetes.io/part-of: orbit-platform
 
     spec:
+      serviceAccountName: orbit-api
       containers:
         - name: orbit-api
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
@@ -58,3 +59,4 @@ spec:
               port: http
             initialDelaySeconds: {{ .Values.probes.liveness.initialDelaySeconds }}
             periodSeconds: {{ .Values.probes.liveness.periodSeconds }}
+          
