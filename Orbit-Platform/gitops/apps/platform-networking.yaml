@@ -8,7 +8,7 @@ spec:
   source:
     repoURL: https://github.com/YOUR_USERNAME/YOUR_REPO.git
     targetRevision: main
-    path: Orbit-Platform/platform/networking
+    path: platform/networking
   destination:
     server: https://kubernetes.default.svc
     namespace: platform-dev
