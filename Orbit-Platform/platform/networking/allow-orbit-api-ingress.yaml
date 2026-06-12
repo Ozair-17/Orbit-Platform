@@ -1,0 +1,17 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: allow-orbit-api-ingress
+  namespace: platform-dev
+spec:
+  podSelector:
+    matchLabels:
+      app.kubernetes.io/name: orbit-api
+  policyTypes:
+    - Ingress
+  ingress:
+    - from:
+        - namespaceSelector: {}
+      ports:
+        - protocol: TCP
+          port: 8080
