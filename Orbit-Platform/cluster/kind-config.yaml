@@ -11,4 +11,4 @@ nodes:
 
 networking:
   disableDefaultCNI: true
-  podSubnet: 192:168.0.0/16
+  podSubnet: 192.168.0.0/16
