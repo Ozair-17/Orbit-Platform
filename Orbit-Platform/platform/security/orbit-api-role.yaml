@@ -1,5 +1,5 @@
 apiVersion: rbac.authorization.k8s.io/v1
-kind: role
+kind: Role
 metadata:
   name: orbit-api-readonly
   namespace: platform-dev
