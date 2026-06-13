@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: platform-servcice-mesh-base
+  name: platform-service-mesh-base
   namespace: argocd
 spec:
   project: default
@@ -11,13 +11,13 @@ spec:
     chart: base
     targetRevision: 1.30.1
 
-    destination:
-      server: https://kubernetes.default.svc
-      namespace: istio-system
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: istio-system
 
-    syncPolicy:
-      automated:
-        prune: true
-        selfHeal: false
-      syncOptions:
-        - CreateNamespace=true
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: false
+    syncOptions:
+      - CreateNamespace=true
