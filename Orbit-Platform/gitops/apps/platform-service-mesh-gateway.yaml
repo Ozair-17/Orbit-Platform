@@ -10,6 +10,14 @@ spec:
     repoURL: https://istio-release.storage.googleapis.com/charts
     chart: gateway
     targetRevision: 1.30.1
+    helm:
+      values: |
+        global:
+          hub: docker.io/istio
+          tag: 1.30.1
+        image:
+          repository: proxyv2
+          tag: 1.30.1
 
   destination:
     server: https://kubernetes.default.svc
