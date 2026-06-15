@@ -20,7 +20,7 @@ spec:
       kind: ValidatingWebhookConfiguration
       name: istio-validator-istio-system
       jsonPointers:
-        - /webhook/0/failurePolicy
+        - /webhooks/0/failurePolicy
 
   syncPolicy:
     automated:
