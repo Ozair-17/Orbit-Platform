@@ -15,9 +15,6 @@ spec:
         global:
           hub: docker.io/istio
           tag: 1.30.1
-        image:
-          repository: proxyv2
-          tag: 1.30.1
 
   destination:
     server: https://kubernetes.default.svc
