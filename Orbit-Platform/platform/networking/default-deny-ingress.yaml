@@ -4,7 +4,9 @@ metadata:
   name: default-deny-ingress
   namespace: platform-dev
 spec:
-  podSelector: {}
+  podSelector:
+    matchLabels:
+      app.kubernetes.io/name: orbit-api
   policyTypes:
     - Ingress
     

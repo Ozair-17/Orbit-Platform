@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: platform-namespaces
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/Ozair-17/Orbit-Platform
+    targetRevision: main
+    path: Orbit-Platform/platform/namespace
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: platform-dev
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: false
+    syncOptions:
+      - CreateNamespace=true

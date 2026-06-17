@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: platform-dev
+  labels:
+    istio.io/rev: default
+    app.kubernetes.io/part-of: orbit-platform
+    orbit.dev/environment: dev

@@ -5,8 +5,12 @@ metadata:
   namespace: {{ .Values.namespace }}
   labels:
     app.kubernetes.io/name: orbit-api
-    app.kubernetes.io/instance: dev
+    app.kubernetes.io/instance: {{ .Release.Name }}
     app.kubernetes.io/part-of: orbit-platform
+    app.kubernetes.io/component: api
+    app.kubernetes.io/managed-by: Helm
+    orbit.dev/environment: dev
+    version: v1
 spec:
   replicas: {{ .Values.replicaCount }}
 
@@ -25,8 +29,12 @@ spec:
     metadata:
       labels:
         app.kubernetes.io/name: orbit-api
-        app.kubernetes.io/instance: dev
+        app.kubernetes.io/instance: {{ .Release.Name }}
         app.kubernetes.io/part-of: orbit-platform
+        app.kubernetes.io/component: api
+        app.kubernetes.io/managed-by: Helm
+        orbit.dev/environment: dev
+        version: v1
 
     spec:
       serviceAccountName: orbit-api
