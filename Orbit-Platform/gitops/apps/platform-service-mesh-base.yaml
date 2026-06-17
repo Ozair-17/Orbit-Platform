@@ -18,7 +18,7 @@ spec:
   ignoreDifferences:
     - group: admissionregistration.k8s.io
       kind: ValidatingWebhookConfiguration
-      name: istio-default-validator
+      name: istiod-default-validator
       jqPathExpressions:
         - '.webhooks[]?.failurePolicy'
     
