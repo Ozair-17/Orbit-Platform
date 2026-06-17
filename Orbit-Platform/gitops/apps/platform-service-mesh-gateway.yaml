@@ -20,6 +20,13 @@ spec:
     server: https://kubernetes.default.svc
     namespace: istio-ingress
 
+  ignoreDifferences:
+    - group: admissionregistration.k8s.io
+      kind: ValidatingWebhookConfiguration
+      name: istio-validator-istio-system
+      jqPathExpressions:
+        - '.webhooks[]?.failurePolicy'
+
   syncPolicy:
     automated:
       prune: true
