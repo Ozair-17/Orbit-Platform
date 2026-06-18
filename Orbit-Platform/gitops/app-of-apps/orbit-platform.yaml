@@ -9,7 +9,7 @@ spec:
   
   source:
     repoURL:  https://github.com/Ozair-17/Orbit-Platform
-    targetRevision: feature/istio-traffic-routing
+    targetRevision: main
     path: Orbit-Platform/gitops/apps
 
   destination:

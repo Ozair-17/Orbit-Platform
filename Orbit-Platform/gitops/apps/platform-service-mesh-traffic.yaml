@@ -7,7 +7,7 @@ spec:
   project: default
   source:
     repoURL: https://github.com/Ozair-17/Orbit-Platform
-    targetRevision: feature/istio-traffic-routing
+    targetRevision: main
     path: Orbit-Platform/charts/platform-service-mesh-traffic
   destination:
     server: https://kubernetes.default.svc
