@@ -1,0 +1,13 @@
+apiVersion: networking.istio.io/v1
+kind: DestinationRule
+metadata:
+  name: {{ .Values.destinationRule.name }}
+  namespace: {{ .Values.destinationRule.namespace }}
+  labels:
+    app.kubernetes.io/name: {{ .Values.destinationRule.name }}
+    app.kubernetes.io/part-of: orbit-platform
+    app.kubernetes.io/component: api
+spec:
+  host: {{ .Values.destinationRule.host }}
+  subsets:
+{{ toYaml .Values.destinationRule.subsets | indent 4 }}

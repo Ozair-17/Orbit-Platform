@@ -1,0 +1,20 @@
+apiVersion: networking.istio.io/v1
+kind: VirtualService
+metadata:
+  name: {{ .Values.virtualService.name }}
+  namespace: {{ .Values.virtualService.namespace }}
+  labels:
+    app.kubernetes.io/name: {{ .Values.virtualService.name }}
+    app.kubernetes.io/part-of: orbit-platform
+    app.kubernetes.io/component: api
+spec:
+  hosts:
+{{ toYaml .Values.virtualService.hosts | indent 4 }}
+  gateways:
+    - {{ .Values.virtualService.gatewayRef }}
+  http:
+    - route:
+        - destination:
+            host: {{ .Values.virtualService.route.host }}
+            port:
+              number: {{ .Values.virtualService.route.port }}

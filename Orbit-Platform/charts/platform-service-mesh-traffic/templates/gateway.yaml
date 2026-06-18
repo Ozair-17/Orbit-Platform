@@ -1,0 +1,19 @@
+apiVersion: networking.istio.io/v1
+kind: Gateway
+metadata:
+  name: {{ .Values.gateway.name }}
+  namespace: {{ .Values.gateway.namespace }}
+  labels:
+    app.kubernetes.io/name: {{ .Values.gateway.name }}
+    app.kubernetes.io/part-of: orbit-platform
+    app.kubernetes.io/component: ingress
+spec:
+  selector:
+{{ toYaml .Values.gateway.selector | indent 4 }}
+  servers:
+    - port:
+        number: {{ .Values.gateway.port }}
+        name: http
+        protocol: {{ .Values.gateway.protocol }}
+      hosts:
+{{ toYaml .Values.gateway.hosts | indent 8 }}

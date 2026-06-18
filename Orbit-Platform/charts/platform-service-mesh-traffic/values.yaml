@@ -1,0 +1,29 @@
+gateway:
+  name: orbit-gateway
+  namespace: istio-ingress
+  selector:
+    app: platform-service-mesh-gateway
+    istio: gateway
+  port: 80
+  protocol: http
+  hosts:
+    - "*"
+
+virtualService:
+  name: orbit-api
+  namespace: platform-dev
+  hosts:
+    - "*"
+  gatewayRef: istio-ingress/orbit-gateway
+  route:
+    host: orbit-api.platform-dev.svc.cluster.local
+    port: 80
+
+destinationRule:
+  name: orbit-api
+  namespace: platform-dev
+  host: orbit-api.platform-dev.svc.cluster.local
+  subsets:
+    - name: v1
+      labels:
+        version: v1
