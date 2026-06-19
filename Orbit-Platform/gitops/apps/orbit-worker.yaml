@@ -7,7 +7,7 @@ spec:
   project: default
   source:
     repoURL: https://github.com/Ozair-17/Orbit-Platform
-    targetRevision: feature/orbit-worker
+    targetRevision: main
     path: Orbit-Platform/charts/orbit-worker
   destination:
     server: https://kubernetes.default.svc
