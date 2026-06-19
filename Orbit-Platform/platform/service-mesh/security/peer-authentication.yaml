@@ -6,6 +6,6 @@ metadata:
   labels:
     app.kubernetes.io/part-of: orbit-platform
     app.kubernetes.io/component: service-mesh-security
-  spec:
-    mtls:
-      mode: PERMISSIVE
+spec:
+  mtls:
+    mode: PERMISSIVE
