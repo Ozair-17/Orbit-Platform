@@ -1,0 +1,11 @@
+apiVersion: security.istio.io/v1
+kind: PeerAuthentication
+metadata:
+  name: platform-dev-mtls
+  namespace: platform-dev
+  labels:
+    app.kubernetes.io/part-of: orbit-platform
+    app.kubernetes.io/component: service-mesh-security
+  spec:
+    mtls:
+      mode: PERMISSIVE

@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: platform-service-mesh-security
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/Ozair-17/Orbit-Platform
+    targetRevision: feature/istio-security
+    path: Orbit-Platform/platform/service-mesh/security
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: platform-dev
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: false
+    syncOptions:
+      - CreateNamespace=true
