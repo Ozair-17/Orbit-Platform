@@ -9,5 +9,5 @@ subjects:
     namespace: platform-dev
 roleRef:
   kind: Role
-  name: orbit-api-readonly
+  name: orbit-woapirker-readonly
   apiGroup: rbac.authorization.k8s.io
