@@ -1,0 +1,9 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: orbit-worker-readonly
+  namespace: platform-dev
+rules:
+  - apiGroups: [""]
+    resources: ["pods","services","configmaps","endpoints"]
+    verbs: ["get","list","watch"]
