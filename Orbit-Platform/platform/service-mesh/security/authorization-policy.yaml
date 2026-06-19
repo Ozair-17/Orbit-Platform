@@ -1,0 +1,24 @@
+apiVersion: security.istio.io/v1
+kind: AuthorizationPolicy
+
+metadata:
+  name: orbit-api-allow-worker
+  namespace: platform-dev
+
+  labels:
+    app.kubernetes.io/part-of: orbit-platform
+    app.kubernetes.io/component: service-mesh-security
+
+spec:
+
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: orbit-api
+
+  action: ALLOW
+
+  rules:
+    - from:
+        - sources:
+            princpals:
+              - cluster.local/ns/platform-dev/sa/orbit-worker
