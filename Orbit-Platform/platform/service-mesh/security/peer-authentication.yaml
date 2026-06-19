@@ -8,4 +8,4 @@ metadata:
     app.kubernetes.io/component: service-mesh-security
 spec:
   mtls:
-    mode: PERMISSIVE
+    mode: STRICT
