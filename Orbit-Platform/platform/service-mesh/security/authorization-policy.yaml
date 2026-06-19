@@ -18,7 +18,11 @@ spec:
   action: ALLOW
 
   rules:
+
     - from:
-        - sources:
-            princpals:
+
+        - source:
+
+            principals:
+
               - cluster.local/ns/platform-dev/sa/orbit-worker
