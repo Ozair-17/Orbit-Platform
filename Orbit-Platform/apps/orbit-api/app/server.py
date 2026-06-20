@@ -9,6 +9,8 @@ MESSAGE = os.getenv("MESSAGE", "Welcome to Orbit Platform")
 ENVIRONMENT = os.getenv("ENVIRONMENT", "local-dev")
 VERSION = os.getenv("VERSION", "0.1.0")
 
+REQUEST_COUNT=0
+
 
 class Handler(BaseHTTPRequestHandler):
     def _send_json(self, status_code, payload):
@@ -17,6 +19,20 @@ class Handler(BaseHTTPRequestHandler):
         self.end_headers()
         self.wfile.write(json.dumps(payload, indent=2).encode("utf-8"))
 
+    def _send_metrics(self):
+        global REQUEST_COUNT
+        metrics = f"""# HELP orbit_api_requests_total Total HTTP requests handled by orbit-api
+    # TYPE orbit_api_requests_total counter
+    orbit_api_requests_total{{app="{APP_NAME}",environment="{ENVIRONMENT}",version="{VERSION}"}} {REQUEST_COUNT}
+    # HELP orbit_api_info Static application information
+    # TYPE orbit_api_info gauge
+    orbit_api_info{{app="{APP_NAME}",environment="{ENVIRONMENT}",version="{VERSION}"}} 1
+    """
+        self.send_response(200)
+        self.send_header("Content-Type", "text/plain; version=0.0.4")
+        self.end_headers()
+        self.wfile.write(metrics.encode("utf-8"))
+
     def _send_html(self, status_code, html):
         self.send_response(status_code)
         self.send_header("Content-Type", "text/html")
@@ -24,6 +40,11 @@ class Handler(BaseHTTPRequestHandler):
         self.wfile.write(html.encode("utf-8"))
 
     def do_GET(self):
+        global REQUEST_COUNT
+        REQUEST_COUNT += 1
+        if self.path == "/metrics":
+          self._send_metrics()
+          return
         if self.path == "/healthz":
             self._send_json(200, {"status": "healthy"})
             return
