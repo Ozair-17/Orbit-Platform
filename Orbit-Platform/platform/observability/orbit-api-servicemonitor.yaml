@@ -1,0 +1,18 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: orbit-api
+  namespace: platform-observability
+  labels:
+    app.kubernetes.io/part-of: orbit-platform
+spec:
+  namespaceSelector:
+    matchNames:
+      - platform-dev
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: orbit-api
+  endpoints:
+    - port: http
+      path: /metrics
+      interval: 15s

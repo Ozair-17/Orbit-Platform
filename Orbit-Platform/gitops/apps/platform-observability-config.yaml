@@ -1,0 +1,18 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: platform-observability-config
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/Ozair-17/Orbit-Platform
+    targetRevision: feature/observability
+    path: Orbit-Platform/platform/observability
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: platform-observability
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: false
