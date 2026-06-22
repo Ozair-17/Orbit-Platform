@@ -26,10 +26,4 @@ spec:
             principals:
 
               - cluster.local/ns/platform-dev/sa/orbit-worker
-    - from:
-
-        - source:
-          
-            namespace:
-            
-              - platform-observability
+              - cluster.local/ns/platform-observability
