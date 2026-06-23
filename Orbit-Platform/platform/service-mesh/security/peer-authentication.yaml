@@ -9,3 +9,6 @@ metadata:
 spec:
   mtls:
     mode: STRICT
+  portLevelMtls:
+    8080:
+      mode: DISABLE
