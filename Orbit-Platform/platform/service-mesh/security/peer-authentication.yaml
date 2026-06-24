@@ -12,3 +12,6 @@ spec:
   portLevelMtls:
     8080:
       mode: DISABLE
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: orbit-api
