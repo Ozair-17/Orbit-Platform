@@ -9,6 +9,11 @@ spec:
       app.kubernetes.io/name: orbit-api
   action: ALLOW
   rules:
+    - to:
+        - operation:
+            paths:
+              - /metrics
+
     - from:
         - source:
             principals:
