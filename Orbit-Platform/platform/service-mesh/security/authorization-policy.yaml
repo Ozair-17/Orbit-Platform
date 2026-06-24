@@ -12,5 +12,13 @@ spec:
     - from:
         - source:
             principals:
-              - cluster.local/ns/platform-dev/sa/orbit-worker
               - cluster.local/ns/platform-observability/sa/platform-observability-kub-prometheus
+      to:
+        - operation:
+            paths:
+              - /metrics
+
+    - from:
+        - source:
+            principals:
+              - cluster.local/ns/platform-dev/sa/orbit-worker
