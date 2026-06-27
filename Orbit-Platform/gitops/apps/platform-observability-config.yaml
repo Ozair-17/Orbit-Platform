@@ -7,7 +7,7 @@ spec:
   project: default
   source:
     repoURL: https://github.com/Ozair-17/Orbit-Platform
-    targetRevision: feature/observability
+    targetRevision: main
     path: Orbit-Platform/platform/observability
   destination:
     server: https://kubernetes.default.svc

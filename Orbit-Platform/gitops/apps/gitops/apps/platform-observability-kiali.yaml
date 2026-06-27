@@ -1,0 +1,32 @@
+version: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: platform-observability-kiali
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://kiali.org/helm-charts
+    chart: kiali-operator
+    targetRevision: 2.27.0
+    helm:
+      values: |
+        cr:
+          create: true
+          namespace: platform-observability
+          spec:
+            auth:
+              strategy: anonymous
+            external_services:
+              prometheus:
+                url: http://platform-observability-kub-prometheus.platform-observability.svc:9090
+  destination:
+    server: https:kubernetes.default.svc
+    namespace: platform-observability
+  syncPolicy:
+    automated:
+      prune: true
+      selfheal: false
+    syncOptions:
+      - CreateNamespace=true
+
