@@ -1,4 +1,4 @@
-version: argoproj.io/v1alpha1
+apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: platform-observability-kiali
@@ -21,12 +21,11 @@ spec:
               prometheus:
                 url: http://platform-observability-kub-prometheus.platform-observability.svc:9090
   destination:
-    server: https:kubernetes.default.svc
+    server: https://kubernetes.default.svc
     namespace: platform-observability
   syncPolicy:
     automated:
       prune: true
-      selfheal: false
+      selfHeal: false
     syncOptions:
       - CreateNamespace=true
-

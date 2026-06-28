@@ -13,4 +13,5 @@ spec:
         - source:
             principals:
               - cluster.local/ns/platform-dev/sa/orbit-worker
+              - cluster.local/ns/platform-dev/sa/default
               - cluster.local/ns/platform-observability/sa/platform-observability-kub-prometheus
