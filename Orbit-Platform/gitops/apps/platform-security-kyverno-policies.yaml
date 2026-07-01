@@ -1,0 +1,18 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: platform-security-kyverno-policies
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/Ozair-17/Orbit-Platform
+    targetRevision: feature/kyverno-policies
+    path: Orbit-Platform/platform/kyverno
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: platform-security
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: false
